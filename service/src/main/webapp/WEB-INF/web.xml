@@ -2,16 +2,12 @@
   <display-name>ApiExample</display-name>
 
   <listener>
-    <listener-class>
-      com.gaseousmammel.service.ApiExampleContextListener
-    </listener-class>
+    <listener-class>com.gaseousmammel.service.ApiExampleContextListener</listener-class>
   </listener>
 
   <servlet>
+    <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
     <servlet-name>Resteasy</servlet-name>
-    <servlet-class>
-      org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-    </servlet-class>
   </servlet>
 
   <servlet-mapping>

@@ -10,6 +10,9 @@ import com.google.inject.Provides;
 import io.swagger.models.Info;
 import javax.inject.Singleton;
 
+/**
+ * Bootstraps the web application.
+ */
 public class ResteasyBootstrapModule extends AbstractModule {
 
   protected void configure() {
@@ -17,7 +20,8 @@ public class ResteasyBootstrapModule extends AbstractModule {
     install(new Swagger2Module());
     install(new HealthModule());
 
-    BuildInfo buildInfo = BuildInfo.load(ResteasyBootstrapModule.class.getResourceAsStream("build-info.properties"));
+    BuildInfo buildInfo = BuildInfo
+        .load(ResteasyBootstrapModule.class.getResourceAsStream("build-info.properties"));
     bind(BuildInfo.class).toInstance(buildInfo);
     bind(ServiceMetadata.class).toInstance(ServiceMetadata.create(buildInfo));
   }
@@ -27,6 +31,7 @@ public class ResteasyBootstrapModule extends AbstractModule {
   Info provideSwagger2Info(ServiceMetadata serviceMetadata) {
     return new Info()
         .title("ApiExample")
+        .description("A test api")
         .version(serviceMetadata.getBuildInfo().getVersion());
   }
 }

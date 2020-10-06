@@ -6,9 +6,14 @@ import com.google.inject.Module;
 import java.util.List;
 import javax.servlet.ServletContext;
 
+/**
+ * Context listener for the application.
+ */
 public class ApiExampleContextListener extends ResteasyContextListener {
+
   @Override
   protected List<? extends Module> getModules(ServletContext context) {
-    return Lists.newArrayList(new ApiExampleModule(), new ResteasyBootstrapModule());
+    return Lists.newArrayList(new ApiExampleModule(),
+        new ResteasyBootstrapModule());
   }
 }
